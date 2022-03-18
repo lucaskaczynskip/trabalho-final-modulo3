@@ -2,7 +2,6 @@ package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.entity;
 
 import lombok.*;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -15,4 +14,14 @@ public class Request {
     private Double reachedValue;
     private Integer idCategory;
     private Integer idUser;
+
+    public Request(Integer idRequest, String title, String description, Double goal, Integer idCategory, Integer idUser) {
+        this.idRequest = idRequest;
+        this.title = title;
+        this.description = description;
+        this.goal = goal;
+        this.reachedValue = 0.0;
+        this.idCategory = idCategory;
+        this.idUser = idUser;
+    }
 }
