@@ -44,4 +44,13 @@ public class RequestRepository {
         list.remove(request);
         return request;
     }
+
+    public List<Request> deleteAll(Integer id) throws Exception {
+        List<Request> removeds = new ArrayList<>();
+        list.stream()
+                .filter(request -> request.getIdUser().equals(id))
+                .forEach(request -> list.add(request));
+        list.removeAll(removeds);
+        return removeds;
+    }
 }
