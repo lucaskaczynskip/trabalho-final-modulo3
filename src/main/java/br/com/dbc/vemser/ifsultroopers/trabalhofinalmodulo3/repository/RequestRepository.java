@@ -34,7 +34,6 @@ public class RequestRepository {
                 .orElseThrow(() -> new BusinessRuleException("Vakinha não encontrada."));
     }
 
-    // TODO - adicionar o get do User
     public Request create(Integer id, Request request) {
         request.setIdUser(id);
         request.setReachedValue(0.0);
@@ -59,6 +58,11 @@ public class RequestRepository {
 
         if (updatedGoal != null) {
             request.setGoal(updatedGoal);
+
+            if (request.getReachedValue() >= request.getGoal()) {
+                list.remove(request);
+                closedList.add(request);
+            }
         }
 
         return request;

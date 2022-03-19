@@ -3,6 +3,7 @@ package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.service;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.request.RequestCreateDTO;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.request.RequestDTO;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.request.RequestUpdateDTO;
+import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.userdto.UsersDTO;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.entity.Request;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.repository.RequestRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,7 +33,10 @@ public class RequestService {
         return mapper.convertValue(entity, RequestDTO.class);
     }
 
-    public RequestDTO add(Integer id, RequestCreateDTO request) {
+    public RequestDTO add(Integer id, RequestCreateDTO request) throws Exception {
+        UsersService usersService = new UsersService();
+        UsersDTO user = usersService.getById(id);
+
         Request entity = mapper.convertValue(request, Request.class);
         Request created = repo.create(id, entity);
         return mapper.convertValue(created, RequestDTO.class);
