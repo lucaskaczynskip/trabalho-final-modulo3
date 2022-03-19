@@ -1,4 +1,4 @@
-package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto;
+package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.request;
 
 import lombok.Data;
 
@@ -10,8 +10,6 @@ public class RequestCreateDTO {
 
     @NotEmpty
     private String title;
-
-    @Size(max = 250)
     private String description;
 
     @NotEmpty
