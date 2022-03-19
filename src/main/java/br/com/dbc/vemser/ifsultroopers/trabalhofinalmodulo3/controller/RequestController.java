@@ -59,7 +59,7 @@ public class RequestController {
     @PostMapping("/{idUser}")
     @Validated
     public ResponseEntity<RequestDTO> post(@PathVariable("idUser") Integer id,
-                                           @RequestBody @Valid RequestCreateDTO request) {
+                                           @RequestBody @Valid RequestCreateDTO request) throws Exception {
         RequestDTO created = service.add(id, request);
         return ResponseEntity.ok(created);
     }

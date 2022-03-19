@@ -19,4 +19,6 @@ public class DonateCreateDTO {
     private Double donate_value;
     @NotEmpty
     private String description;
+    @NotNull
+    private Integer idRequest;
 }

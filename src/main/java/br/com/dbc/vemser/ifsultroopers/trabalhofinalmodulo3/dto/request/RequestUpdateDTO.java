@@ -2,7 +2,6 @@ package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.request;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Data

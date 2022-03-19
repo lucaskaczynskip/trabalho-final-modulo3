@@ -9,6 +9,5 @@ import javax.validation.constraints.NotNull;
 public class DonateDTO extends DonateCreateDTO{
     @NotNull
     private Integer id_donate;
-    @NotNull
-    private Integer idRequest;
+
 }
