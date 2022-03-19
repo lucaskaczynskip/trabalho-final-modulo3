@@ -1,7 +1,9 @@
 package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.repository;
 
+import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.userdto.UsersDTO;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.entity.Users;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.exception.BusinessRuleException;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -29,5 +31,24 @@ public class UsersRepository {
                 .filter(users -> users.getIdUser().equals(id))
                 .findFirst()
                 .orElseThrow(() -> new BusinessRuleException("Pessoa nao encontrada"));
+    }
+
+    public Users create (Users users) {
+        users.setIdUser(COUNTER.incrementAndGet());
+        usersList.add(users);
+        return users;
+    }
+
+    public Users update (Integer id, Users users) throws BusinessRuleException {
+        Users u = getById(id);
+        u = users;
+        return u;
+    }
+
+    public Users delete (Integer id) throws BusinessRuleException {
+        if (usersList.remove(getById(id))) {
+            return getById(id);
+        }
+        return null;
     }
 }

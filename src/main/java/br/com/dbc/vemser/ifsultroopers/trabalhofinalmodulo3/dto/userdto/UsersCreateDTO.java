@@ -1,5 +1,6 @@
 package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.userdto;
 
+import jdk.jfr.BooleanFlag;
 import lombok.Data;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
@@ -23,8 +24,7 @@ public class UsersCreateDTO {
     @Size(min = 8)
     private String password;
 
-    @NotNull
-    @NotEmpty
+    @BooleanFlag
     private Boolean type;
 
     @NotNull
