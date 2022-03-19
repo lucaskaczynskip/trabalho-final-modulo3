@@ -2,6 +2,7 @@ package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.repository;
 
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.request.RequestUpdateDTO;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.entity.Request;
+import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.exception.BusinessRuleException;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -15,6 +16,14 @@ public class RequestRepository {
     public static List<Request> closedList = new ArrayList<>();
     public static AtomicInteger COUNTER = new AtomicInteger();
 
+    public RequestRepository() {
+        list.add(new Request(COUNTER.incrementAndGet(), "Minha casa foi alagada pela enchente", "Minha casa foi alagada pela enchente que teve aqui na cidada, perdi todas as minhas coisas, não tenho nem comida para alimentar meus filhos, preciso urgentemente de ajuda para poder comprar nossas coisas e podermos recomeçar", 5000.0, 0.0, 1, 1));
+        list.add(new Request(COUNTER.incrementAndGet(), "Estou sem dinheiro para comprar remédios para minha filha", "Este mês ainda não recebi por conta do atraso dos pagamentos na minha empresa, e tenho em casa uma filha de 3 anos que precisa de um certo remédio que é caro por conta de uma doença que ela tem, estou desesperada e preciso de ajuda, pois tenho medo que algo aconteça com ela", 369.50, 0.0, 1, 2));
+        list.add(new Request(COUNTER.incrementAndGet(), "Preciso de ajuda para realizar um sonho", "Com muito esforço consegui uma vaga em uma faculdade na Suiça, mas minha familía é muito cara, e não tenho dinheiro", 30000.0, 0.0, 2, 3));
+//        list.add(new Request(COUNTER.incrementAndGet(), ""))
+
+    }
+
     public List<Request> getAll() {
         return list;
     }
@@ -23,7 +32,7 @@ public class RequestRepository {
         return list.stream()
                 .filter(request -> request.getIdRequest().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Vakinha não encontrada."));
+                .orElseThrow(() -> new BusinessRuleException("Vakinha não encontrada."));
     }
 
     // TODO - adicionar o get do User
