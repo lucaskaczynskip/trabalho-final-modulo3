@@ -34,7 +34,7 @@ public class RequestController {
     @ApiOperation(value = "Retorna uma vakinha pelo id")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Retorna uma vakinha"),
-            @ApiResponse(code = 500, message = "Não encontra a vakinha.")
+            @ApiResponse(code = 400, message = "Não encontra a vakinha.")
     })
     @GetMapping("/{idRequest}")
     public ResponseEntity<RequestDTO> get(@PathVariable("idRequest") Integer id) throws Exception {
@@ -54,7 +54,7 @@ public class RequestController {
     @ApiOperation(value = "Cria uma vakinha pelo id de um usuário")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Retorna a vakinha criada."),
-            @ApiResponse(code = 500, message = "Usuário inválido.")
+            @ApiResponse(code = 400, message = "Usuário inválido.")
     })
     @PostMapping("/{idUser}")
     @Validated
@@ -67,7 +67,7 @@ public class RequestController {
     @ApiOperation(value = "Atualiza a vakinha pelo seu id")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Retorna a vakinha atualizada."),
-            @ApiResponse(code = 500, message = "Vakinha não encontrada.")
+            @ApiResponse(code = 400, message = "Vakinha não encontrada.")
     })
     @PutMapping("/{idRequest}")
     @Validated
@@ -80,7 +80,7 @@ public class RequestController {
     @ApiOperation(value = "Deleta a vakinha pelo seu id")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Retorna a vakinha deletada."),
-            @ApiResponse(code = 500, message = "Vakinha não encontrada.")
+            @ApiResponse(code = 400, message = "Vakinha não encontrada.")
     })
     @DeleteMapping("/{idRequest}")
     public ResponseEntity<RequestDTO> delete(@PathVariable("idRequest") Integer id) throws Exception {
