@@ -1,4 +1,4 @@
-package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto;
+package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.request;
 
 import lombok.Data;
 
@@ -6,5 +6,4 @@ import lombok.Data;
 public class RequestDTO extends RequestCreateDTO {
 
     private Integer idRequest;
-    private Double reachedValue = 0.0;
 }

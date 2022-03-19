@@ -1,5 +1,6 @@
 package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.repository;
 
+import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.request.RequestUpdateDTO;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.entity.Request;
 import org.springframework.stereotype.Repository;
 
@@ -24,19 +25,34 @@ public class RequestRepository {
                 .orElseThrow(() -> new Exception("Vakinha não encontrada."));
     }
 
+    // TODO - adicionar o get do User
     public Request create(Integer id, Request request) {
         request.setIdUser(id);
+        request.setReachedValue(0.0);
         list.add(request);
         return request;
     }
 
-    public Request update(Integer id, Request newData) throws Exception {
+    public Request update(Integer id, RequestUpdateDTO newData) throws Exception {
         Request request = this.getById(id);
-        newData.setIdRequest(id);
-        newData.setIdUser(request.getIdUser());
-        list.add(list.indexOf(request), newData);
-        list.remove(request);
-        return newData;
+
+        String updatedTitle = newData.getTitle();
+        String updatedDescription = newData.getDescription();
+        Double updatedGoal = newData.getGoal();
+
+        if (updatedTitle != null) {
+            request.setTitle(updatedTitle);
+        }
+
+        if (updatedDescription != null) {
+            request.setDescription(updatedDescription);
+        }
+
+        if (updatedGoal != null) {
+            request.setGoal(updatedGoal);
+        }
+
+        return request;
     }
 
     public Request delete(Integer id) throws Exception {
