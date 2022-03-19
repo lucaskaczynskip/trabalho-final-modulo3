@@ -1,5 +1,6 @@
 package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.service;
 
+import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.category.CategoryDTO;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.request.RequestCreateDTO;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.request.RequestDTO;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.request.RequestUpdateDTO;
@@ -60,6 +61,16 @@ public class RequestService {
     public List<RequestDTO> deleteAll(Integer id) throws Exception {
         List<Request> list = repo.deleteAll(id);
         return list.stream()
+                .map(request -> mapper.convertValue(request, RequestDTO.class))
+                .toList();
+    }
+
+    public List<RequestDTO> getByCategory(Integer id) throws Exception {
+        CategoryService categoryService = new CategoryService();
+        CategoryDTO categoryDTO = categoryService.findById(id);
+
+        return repo.getByCategory(id)
+                .stream()
                 .map(request -> mapper.convertValue(request, RequestDTO.class))
                 .toList();
     }

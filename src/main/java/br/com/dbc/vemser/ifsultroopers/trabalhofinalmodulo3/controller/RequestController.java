@@ -87,4 +87,14 @@ public class RequestController {
         RequestDTO deleted = service.delete(id);
         return ResponseEntity.ok(deleted);
     }
+
+    @ApiOperation(value = "Retorna uma lista de vakinhas pelo id de uma categoria")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Retorna uma lista."),
+            @ApiResponse(code = 400, message = "Categoria não existe.")
+    })
+    @GetMapping("/category/{idCategory}")
+    public List<RequestDTO> getByCategory(@PathVariable("idCategory") Integer id) throws Exception {
+        return service.getByCategory(id);
+    }
 }

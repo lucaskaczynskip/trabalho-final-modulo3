@@ -1,6 +1,7 @@
 package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.repository;
 
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.request.RequestUpdateDTO;
+import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.entity.Category;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.entity.Request;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.exception.BusinessRuleException;
 import org.springframework.stereotype.Repository;
@@ -88,6 +89,12 @@ public class RequestRepository {
 
     public List<Request> getClosedList() {
         return closedList;
+    }
+
+    public List<Request> getByCategory(Integer id) {
+        return list.stream()
+                .filter(request -> request.getIdCategory().equals(id))
+                .toList();
     }
 
     public List<Request> deleteAll(Integer id) throws Exception {
