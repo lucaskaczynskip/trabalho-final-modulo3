@@ -14,6 +14,8 @@ public class CategoryRepository {
     public List<Category> list = new ArrayList<>();
     public static AtomicInteger COUNTER = new AtomicInteger();
 
+    // TODO - criar categorias inicias com base nas vakinhas
+
     public List<Category> findAll() {
         return list;
     }

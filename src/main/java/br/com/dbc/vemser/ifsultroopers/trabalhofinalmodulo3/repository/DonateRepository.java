@@ -15,6 +15,7 @@ public class DonateRepository {
     private static List<Donate> listDonate = new ArrayList<>();
     private AtomicInteger COUNTER = new AtomicInteger();
 
+    // TODO - tratar esse problema com a Ana (Falar com o Lucas sobre)
     public DonateRepository() {
         listDonate.add(new Donate(COUNTER.incrementAndGet() /*1*/, 1, "Maicon Gerardi","ana.gocthel@dbccompany.com.br", 100.00, "Boa sorte!"));
         listDonate.add(new Donate(COUNTER.incrementAndGet() /*1*/, 1, "Ana Vitória","ana.gocthel@dbccompany.com.br", 200.00, "Boa sorte!"));
