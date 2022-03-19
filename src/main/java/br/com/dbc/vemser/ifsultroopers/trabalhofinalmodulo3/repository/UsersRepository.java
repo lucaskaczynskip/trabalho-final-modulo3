@@ -15,9 +15,9 @@ public class UsersRepository {
 
     public UsersRepository () {
         usersList.add(new Users(COUNTER.incrementAndGet(), "ana", "ana@ana.com", "12345678", false, "818.411.730-29"));
-        usersList.add(new Users(COUNTER.incrementAndGet(), "nicolas", "nicoals@nicolas.com", "12345678", true, "76.161.136/0001-45"));
         usersList.add(new Users(COUNTER.incrementAndGet(), "maicon", "maicon@maicon.com", "12345678", false, "014.593.670-81"));
         usersList.add(new Users(COUNTER.incrementAndGet(), "augusto", "augusto@augusto.com", "12345678", true, "54.809.381/0001-83"));
+        usersList.add(new Users(COUNTER.incrementAndGet(), "nicolas", "nicoals@nicolas.com", "12345678", true, "76.161.136/0001-45"));
     }
 
     public List<Users> list () {
