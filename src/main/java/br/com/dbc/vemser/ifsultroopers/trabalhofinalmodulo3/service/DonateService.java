@@ -38,7 +38,7 @@ public class DonateService {
     public List<DonateDTO>list(){
         return donateRepository.list()
                 .stream()
-                .map(pessoa -> objectMapper.convertValue(pessoa, DonateDTO.class))
+                .map(donate -> objectMapper.convertValue(donate, DonateDTO.class))
                 .collect(Collectors.toList());
     }
 

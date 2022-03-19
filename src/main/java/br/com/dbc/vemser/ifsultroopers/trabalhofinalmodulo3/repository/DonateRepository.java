@@ -37,7 +37,7 @@ public class DonateRepository {
         Donate donateRecovered = listDonate.stream()
                 .filter(donate -> donate.getId_donate().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new BusinessRuleException("Pessoa não econtrada"));
+                .orElseThrow(() -> new BusinessRuleException("Donate não econtrada"));
         donateRecovered.setDonator_name(donateUpdate.getDonator_name());
         donateRecovered.setDonator_email(donateUpdate.getDonator_email());
         donateRecovered.setDonate_value(donateUpdate.getDonate_value());
@@ -49,7 +49,7 @@ public class DonateRepository {
         Donate pessoaRecuperada = listDonate.stream()
                 .filter(pessoa -> pessoa.getId_donate().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new BusinessRuleException("Pessoa não econtrada"));
+                .orElseThrow(() -> new BusinessRuleException("Donate não econtrada"));
         return pessoaRecuperada;
     }
 
@@ -57,7 +57,7 @@ public class DonateRepository {
         Donate pessoaRecuperada = listDonate.stream()
                 .filter(pessoa -> pessoa.getId_donate().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new BusinessRuleException("Pessoa não econtrada"));
+                .orElseThrow(() -> new BusinessRuleException("Donate não econtrada"));
         listDonate.remove(pessoaRecuperada);
         return pessoaRecuperada;
     }
