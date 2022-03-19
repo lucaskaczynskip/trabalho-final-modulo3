@@ -1,5 +1,6 @@
 package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.repository;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.entity.Donate;
+import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.entity.Request;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.exception.BusinessRuleException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -22,9 +23,10 @@ public class DonateRepository {
         listDonate.add(new Donate(COUNTER.incrementAndGet() /*1*/, 4, "Augusto Oliveira","ana.gocthel@dbccompany.com.br", 10.00, "Boa sorte!"));
     }
 
-    public Donate create(Donate donate) {
+    public Donate create(Donate donate) throws Exception {
         donate.setId_donate(COUNTER.incrementAndGet());
         listDonate.add(donate);
+
         return donate;
     }
 
