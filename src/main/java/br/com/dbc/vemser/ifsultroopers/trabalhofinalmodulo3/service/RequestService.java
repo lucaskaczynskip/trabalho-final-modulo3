@@ -48,9 +48,21 @@ public class RequestService {
         return mapper.convertValue(request, RequestDTO.class);
     }
 
+    public RequestDTO incrementReachedValue(Integer id, Double value) throws Exception {
+        Request request = repo.incrementReachedValue(id, value);
+        return mapper.convertValue(request, RequestDTO.class);
+    }
+
     public List<RequestDTO> deleteAll(Integer id) throws Exception {
         List<Request> list = repo.deleteAll(id);
         return list.stream()
+                .map(request -> mapper.convertValue(request, RequestDTO.class))
+                .toList();
+    }
+
+    public List<RequestDTO> getClosedList() {
+        return repo.getClosedList()
+                .stream()
                 .map(request -> mapper.convertValue(request, RequestDTO.class))
                 .toList();
     }

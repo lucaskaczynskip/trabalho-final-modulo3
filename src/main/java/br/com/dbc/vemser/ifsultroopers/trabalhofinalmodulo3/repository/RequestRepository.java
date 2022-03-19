@@ -12,6 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class RequestRepository {
 
     public static List<Request> list = new ArrayList<>();
+    public static List<Request> closedList = new ArrayList<>();
     public static AtomicInteger COUNTER = new AtomicInteger();
 
     public List<Request> getAll() {
@@ -59,6 +60,22 @@ public class RequestRepository {
         Request request = this.getById(id);
         list.remove(request);
         return request;
+    }
+
+    public Request incrementReachedValue(Integer id, Double value) throws Exception {
+        Request request = this.getById(id);
+        request.setReachedValue(request.getReachedValue() + value);
+
+        if (request.getReachedValue() >= request.getGoal()) {
+            list.remove(request);
+            closedList.add(request);
+        }
+
+        return request;
+    }
+
+    public List<Request> getClosedList() {
+        return closedList;
     }
 
     public List<Request> deleteAll(Integer id) throws Exception {
