@@ -6,5 +6,6 @@ import lombok.Data;
 public class RequestDTO extends RequestCreateDTO {
 
     private Integer idRequest;
+    private Integer idUser;
     private Double reachedValue;
 }

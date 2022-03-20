@@ -24,6 +24,8 @@ public class RequestRepository {
         list.add(new Request(COUNTER.incrementAndGet(), "Cai e quebrei minha clavicula", "Estava andando de bicicleta, quando cai numa vala, e com isso quebrei minha clavicula, a cirurgia é cara e atualmente não tenho dinheiro, preciso de ajuda para poder voltar a pedalar e me quebrar mais.", 12000.0, 10.00, 2, 4));
     }
 
+    public RequestRepository(boolean some) {}
+
     public List<Request> getAll() {
         return list;
     }

@@ -18,7 +18,4 @@ public class RequestCreateDTO {
 
     @NotNull
     private Integer idCategory;
-
-    @NotNull
-    private Integer idUser;
 }

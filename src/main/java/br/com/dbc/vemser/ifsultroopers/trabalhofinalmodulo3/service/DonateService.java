@@ -21,8 +21,7 @@ public class DonateService {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @Autowired
-    private RequestRepository requestRepository = new RequestRepository();
+    private RequestRepository requestRepository = new RequestRepository(true);
 
     public DonateDTO create(DonateCreateDTO donateCreate) throws Exception {
 

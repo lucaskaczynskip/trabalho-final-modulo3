@@ -37,9 +37,7 @@ public class CategoryService {
             throw new BusinessRuleException("Categoria já existe.");
         }
 
-        CategoryDTO entityDTO = mapper.convertValue(category, CategoryDTO.class);
-
-        Category entity = mapper.convertValue(entityDTO, Category.class);
+        Category entity = mapper.convertValue(category, Category.class);
         Category created = repo.create(entity);
 
         return mapper.convertValue(created, CategoryDTO.class);
