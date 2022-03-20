@@ -44,7 +44,7 @@ public class CategoryService {
     }
 
     public CategoryDTO update(Integer id, CategoryCreateDTO data) throws Exception {
-        RequestDTO entityDTO = mapper.convertValue(data, RequestDTO.class);
+        CategoryDTO entityDTO = mapper.convertValue(data, CategoryDTO.class);
         Category updated = repo.update(id, mapper.convertValue(entityDTO, Category.class));
         return mapper.convertValue(updated, CategoryDTO.class);
     }

@@ -41,7 +41,7 @@ public class CategoryRepository {
         Category exists = this.findById(id);
         exists.setName(category.getName());
         exists.setDescription(category.getDescription());
-        return category;
+        return exists;
     }
 
     public Category delete(Integer id) throws Exception {

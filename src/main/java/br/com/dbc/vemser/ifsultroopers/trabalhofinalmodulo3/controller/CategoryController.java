@@ -61,7 +61,7 @@ public class CategoryController {
     })
     @PutMapping("/{idCategory}")
     @Validated
-    public ResponseEntity<CategoryDTO> put(@PathVariable("{idCategory}") Integer id,
+    public ResponseEntity<CategoryDTO> put(@PathVariable("idCategory") Integer id,
                                            @RequestBody @Valid CategoryCreateDTO data) throws Exception {
         CategoryDTO updated = service.update(id, data);
         return ResponseEntity.ok(updated);
@@ -73,7 +73,7 @@ public class CategoryController {
             @ApiResponse(code = 400, message = "Categoria não existe.")
     })
     @DeleteMapping("/{idCategory}")
-    public ResponseEntity<CategoryDTO> delete(@PathVariable("{idCategory}") Integer id) throws Exception {
+    public ResponseEntity<CategoryDTO> delete(@PathVariable("idCategory") Integer id) throws Exception {
         CategoryDTO deleted = service.delete(id);
         return ResponseEntity.ok(deleted);
     }
