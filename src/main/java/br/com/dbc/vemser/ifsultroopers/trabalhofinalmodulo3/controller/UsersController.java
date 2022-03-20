@@ -45,17 +45,19 @@ public class UsersController {
 
     @ApiOperation(value = "Insere e Retorna o Usuario inserido")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Retorna Usuario inserido")
+            @ApiResponse(code = 200, message = "Retorna Usuario inserido"),
+            @ApiResponse(code = 400, message = "CPF ou CNPJ Invalido")
     })
     @PostMapping
-    public UsersDTO create (@Valid @RequestBody UsersCreateDTO usersCreateDTO) {
+    public UsersDTO create (@Valid @RequestBody UsersCreateDTO usersCreateDTO) throws BusinessRuleException {
         return usersService.create(usersCreateDTO);
     }
 
     @ApiOperation(value = "Atualiza e Retorna o usuario atualizado pelo ID")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Retorna Usuario atualizado"),
-            @ApiResponse(code = 400, message = "Usuario nao encontrado")
+            @ApiResponse(code = 400, message = "Usuario nao encontrado"),
+            @ApiResponse(code = 400, message = "CPF ou CNPJ Invalido")
     })
     @PutMapping("/{idUser}")
     public UsersDTO update (@PathVariable("idUser") Integer id, @Valid UsersCreateDTO usersCreateDTO) throws BusinessRuleException {

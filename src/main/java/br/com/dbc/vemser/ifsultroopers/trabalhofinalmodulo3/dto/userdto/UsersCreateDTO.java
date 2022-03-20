@@ -2,8 +2,6 @@ package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.userdto;
 
 import jdk.jfr.BooleanFlag;
 import lombok.Data;
-import org.hibernate.validator.constraints.br.CNPJ;
-import org.hibernate.validator.constraints.br.CPF;
 
 import javax.validation.constraints.*;
 

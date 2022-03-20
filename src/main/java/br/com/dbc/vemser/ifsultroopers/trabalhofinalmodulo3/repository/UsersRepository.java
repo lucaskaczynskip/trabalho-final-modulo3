@@ -1,11 +1,8 @@
 package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.repository;
 
-import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.userdto.UsersDTO;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.entity.Users;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.exception.BusinessRuleException;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Repository;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -16,10 +13,10 @@ public class UsersRepository {
     private AtomicInteger COUNTER = new AtomicInteger();
 
     public UsersRepository () {
-        usersList.add(new Users(COUNTER.incrementAndGet(), "ana", "ana@ana.com", "12345678", false, "818.411.730-29"));
-        usersList.add(new Users(COUNTER.incrementAndGet(), "maicon", "maicon@maicon.com", "12345678", false, "014.593.670-81"));
-        usersList.add(new Users(COUNTER.incrementAndGet(), "augusto", "augusto@augusto.com", "12345678", true, "54.809.381/0001-83"));
-        usersList.add(new Users(COUNTER.incrementAndGet(), "nicolas", "nicoals@nicolas.com", "12345678", true, "76.161.136/0001-45"));
+        usersList.add(new Users(COUNTER.incrementAndGet(), "ana", "ana@ana.com", "12345678", false, "81841173029"));
+        usersList.add(new Users(COUNTER.incrementAndGet(), "maicon", "maicon@maicon.com", "12345678", false, "01459367081"));
+        usersList.add(new Users(COUNTER.incrementAndGet(), "augusto", "augusto@augusto.com", "12345678", true, "54809381000183"));
+        usersList.add(new Users(COUNTER.incrementAndGet(), "nicolas", "nicoals@nicolas.com", "12345678", true, "76161136000145"));
     }
 
     public List<Users> list () {
@@ -41,13 +38,16 @@ public class UsersRepository {
 
     public Users update (Integer id, Users users) throws BusinessRuleException {
         Users u = getById(id);
-        u = users;
+        users.setIdUser(id);
+        int index = list().indexOf(u);
+        list().set(index, users);
         return u;
     }
 
     public Users delete (Integer id) throws BusinessRuleException {
-        if (usersList.remove(getById(id))) {
-            return getById(id);
+        Users u = getById(id);
+        if (usersList.remove(u)) {
+            return u;
         }
         return null;
     }
