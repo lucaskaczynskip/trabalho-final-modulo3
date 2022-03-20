@@ -3,6 +3,7 @@ package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.request;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
@@ -12,12 +13,12 @@ public class RequestCreateDTO {
     private String title;
     private String description;
 
-    @NotEmpty
+    @NotNull
     private Double goal;
 
-    @NotEmpty
+    @NotNull
     private Integer idCategory;
 
-    @NotEmpty
+    @NotNull
     private Integer idUser;
 }

@@ -37,6 +37,7 @@ public class RequestRepository {
 
     public Request create(Integer id, Request request) {
         request.setIdUser(id);
+        request.setIdRequest(COUNTER.incrementAndGet());
         request.setReachedValue(0.0);
         list.add(request);
         return request;

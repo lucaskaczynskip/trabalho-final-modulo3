@@ -20,6 +20,13 @@ public class RequestService {
     private RequestRepository repo;
 
     @Autowired
+    private UsersService usersService;
+
+    @Autowired
+    private CategoryService categoryService;
+
+
+    @Autowired
     private ObjectMapper mapper;
 
     public List<RequestDTO> get() {
@@ -35,7 +42,6 @@ public class RequestService {
     }
 
     public RequestDTO add(Integer id, RequestCreateDTO request) throws Exception {
-        UsersService usersService = new UsersService();
         UsersDTO user = usersService.getById(id);
 
         Request entity = mapper.convertValue(request, Request.class);
@@ -66,7 +72,6 @@ public class RequestService {
     }
 
     public List<RequestDTO> getByCategory(Integer id) throws Exception {
-        CategoryService categoryService = new CategoryService();
         CategoryDTO categoryDTO = categoryService.findById(id);
 
         return repo.getByCategory(id)
