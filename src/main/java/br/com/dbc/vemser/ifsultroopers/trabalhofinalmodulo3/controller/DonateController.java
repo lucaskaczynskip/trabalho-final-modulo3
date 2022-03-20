@@ -79,7 +79,7 @@ public class DonateController {
             @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
-    @DeleteMapping("/{idPessoa}") // localhost:8080/pessoa/10
+    @DeleteMapping("/{idDonate}") // localhost:8080/pessoa/10
     public ResponseEntity<DonateDTO> delete(@PathVariable("idDonate") Integer id) throws Exception {
         DonateDTO donateDTO = donateService.delete(id);
 //        emailService.pessoaSendEmail(pessoaDTO, "Você perdeu o acesso ao nosso sistema.", " Delet de conta");
