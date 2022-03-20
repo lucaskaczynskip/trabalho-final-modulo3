@@ -14,7 +14,11 @@ public class CategoryRepository {
     public List<Category> list = new ArrayList<>();
     public static AtomicInteger COUNTER = new AtomicInteger();
 
-    // TODO - criar categorias inicias com base nas vakinhas
+    public CategoryRepository() {
+        list.add(new Category(COUNTER.incrementAndGet(), "Pobreza", "Falta de recursos financeiros."));
+        list.add(new Category(COUNTER.incrementAndGet(), "Sonhos", "Sonhos que as pessoas desejam alcançar."));
+        list.add(new Category(COUNTER.incrementAndGet(), "Lutas Sociais", "Lutas em prol de causas sociais."));
+    }
 
     public List<Category> findAll() {
         return list;
