@@ -26,9 +26,9 @@ public class DonateService {
     public DonateDTO create(DonateCreateDTO donateCreate) throws Exception {
 
         Donate donate = objectMapper.convertValue(donateCreate, Donate.class);
+        requestRepository.incrementReachedValue(donate.getIdRequest(), donate.getDonate_value());
         Donate donateCreated = donateRepository.create(donate);
         DonateDTO donateDTO = objectMapper.convertValue(donateCreated, DonateDTO.class);
-        requestRepository.incrementReachedValue(donate.getIdRequest(), donate.getDonate_value());
 
         return donateDTO;
 
